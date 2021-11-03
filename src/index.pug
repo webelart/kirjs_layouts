@@ -1,0 +1,42 @@
+doctype html
+html 
+    head
+        meta(charset="utf-8")
+        title My travel
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet")
+        link(href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet")
+        link(href="./css/reset.css", rel="stylesheet")
+        link(href="./css/index.css", rel="stylesheet")
+    body
+        header.header
+            .content
+                nav.nav
+                    .navLeft
+                        .mainNav
+                            each item in ['Home', 'Pricing', 'Events', 'Contacts']
+                                a.logo
+                                    img(src="./img/map.svg" alt="My travel")
+                                a(href="#") Home
+                                a(href="#") Pricing
+                                a(href="#") Events
+                                a(href="#") Contacts
+                    .navRight
+                        button.buttonWhite Get Started
+           
+        .content 
+            section
+                .hgroup
+                    h2 A life time experience
+                    h1 Norway Time<br/>To Remember
+                button.colorButton
+                    | Explore locations
+                //- #parallax.parallax
+                //-     img(src="./img/parallax/01.png" alt="Layer 1" data-depth="0")
+                //-     img(src="./img/parallax/02.png" alt="Layer 2" data-depth="0.2")
+                //-     img(src="./img/parallax/03.png" alt="Layer 3" data-depth="0.4")
+                //-     img(src="./img/parallax/04.png" alt="Layer 4" data-depth="0.6")
+                //-     img(src="./img/parallax/05.png" alt="Layer 5" data-depth="0.8")
+                //-     img(src="./img/parallax/06.png" alt="Layer 6" data-depth="1")
+            
+        script(src="./js/index.js")
