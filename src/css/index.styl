@@ -1,56 +1,216 @@
+color-background = #FFE6D3;
+color-brown = #1F030E;
+color-brown-lite = #70241D;
+color-white = #FFFFFF;
+
+/*
+    Global styles
+*/
+
 html,
 body {
     font: 20px/1.4 'Montserrat', sans-serif;
 }
 
 body {
-    background: #FFE6D3;
+    background: color-background;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin-bottom: 2em;
+}
+
+svg {
+    opacity: 0;
+}
+
+svg.svgStartAnimation {
+    opacity: 1;
+
+    path {
+        animation: anim-line 1s ease forwards;
+    }
+}
+
+@keyframes anim-line {
+    to {
+        stroke-dashoffset: 0;
+    }
 }
 
 .content {
     max-width: 1200px;
-    padding: 2rem;
+    padding: 0 2rem;
     margin: 0 auto;
 }
 
+.header {
+    .content {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
+.main {
+    .content {
+        padding-top: 0;
+        padding-bottom: 2rem;
+    }
+}
+
+.footer {
+    padding: 3rem 0 0;
+    .content {
+        text-align: center;
+    }
+}
+
+.section {
+    &Main {
+        position: relative;
+    }
+
+    &Absolute {
+        position: absolute;
+        top: clamp(4rem, 6vw, 6rem);
+        left: 0;
+        z-index: 2;
+    }
+
+    &White {
+        position: relative;
+        background: color-white;
+        margin: 5rem 0;
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        &::before,
+        &::after {
+            z-index: 1;
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 8rem;
+            left: 0;
+        }
+
+        &::before {
+            top: -5rem;
+            background: url('/img/decorators/top.png') repeat-x center;
+            background-size: auto 100%;
+        }
+
+        &::after {
+            bottom: -7rem;
+            background: url('/img/decorators/bottom.png') repeat-x center;
+            background-size: auto 100%;
+        }
+    }
+}
+
+/*
+    Main styles
+*/
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &Left {
+        display: flex;
+    }
+
+    &Logo {
+        margin-right: 2vw;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
+
 .mainNav {
-    font-size: 16px;
+    font-size: 0.8rem;
     line-height: 1;
     font-weight: 700;
     display: flex;
     align-items: center;
 
-    a {
+    &Link {
+        cursor: pointer;
         display: inline-block;
-        color: #1F030E;
-        padding: 1rem 4rem 1rem 0;
+        color: color-brown;
         text-decoration: none;
+        padding: 0.5rem clamp(1rem, 4vw, 3rem);
+        transition: opacity 0.2s;
 
-        &:visited,
+        &:visited {
+            color: color-brown;
+        }
+
         &:hover,
         &:active {
-            color: #1F030E;
+            opacity: 0.5;
         }
     }
 }
 
-.buttonWhite {
-    background: rgba(255, 255, 255, 0.5);
+.button {
+    font: 700 0.8rem/1em 'Montserrat', sans-serif;
+    cursor: pointer;
     display: inline-block;
-    padding: 1.2em 2em;
     border: none;
-    border-radius: 10px;
-    font: 700 16px/1em 'Montserrat', sans-serif;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+
+    &White {
+        background: color-white;
+        padding: 1.2em 2em;
+
+        &:hover {
+            background: color-brown;
+            color: color-white;
+        }
+    }
+
+    &Brown {
+        font-size: 0.9rem;
+        padding: 1.4em 3em;
+        border-radius: 1rem;
+        color: white;
+        background: linear-gradient(to right, #1f030e 0%,#70241d 100%);
+    }
 }
 
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.hgroup {
+    &Subtitle {
+        color: color-brown-lite;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        font-size: 0.9rem;
+        margin-bottom: 0.8em;
+    }
+
+    &Title {
+        font-size: 3.5rem;
+        line-height: 1.2;
+        font-weight: 700;
+        margin-bottom: 0.4em;
+    }
 }
 
 .parallax {
-    background: pink;
     position: relative;
     width: 100%;
     padding-bottom: 116%;
@@ -62,3 +222,63 @@ body {
         width: 100%;
     }
 }
+
+.icons {
+    padding-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    &Item {
+        width: clamp(6rem, 12vw, 10rem);
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    margin-bottom: 2rem;
+
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+
+/* JS styles */
+.jsAnimated.jsSVG {
+    animation-name: bounceInDown;
+    opacity: 1;
+    transform: translate3D(0, 0, 0);
+}
+
+.jsAnimated.jsBounceInDown {
+    animation-name: bounceInDown;
+    opacity: 1;
+    transform: translate3D(0, 0, 0);
+}
+
+.jsAnimated {
+    animation-fill-mode: both;
+    animation-duration: 0.5s;
+    animation-delay: 0.3s;
+    backface-visibility: hidden;
+}
+
+@keyframes bounceInDown {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 300px, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+

@@ -13,30 +13,58 @@ html
             .content
                 nav.nav
                     .navLeft
-                        .mainNav
+                        a.navLogo(href="/")
+                            img(src="./img/map.svg" alt="My travel")
+                        ul.mainNav
                             each item in ['Home', 'Pricing', 'Events', 'Contacts']
-                                a.logo
-                                    img(src="./img/map.svg" alt="My travel")
-                                a(href="#") Home
-                                a(href="#") Pricing
-                                a(href="#") Events
-                                a(href="#") Contacts
+                                li.mainNavItem
+                                    a.mainNavLink(href="/")= item
                     .navRight
-                        button.buttonWhite Get Started
+                        button.button.buttonWhite Get Started
            
-        .content 
-            section
-                .hgroup
-                    h2 A life time experience
-                    h1 Norway Time<br/>To Remember
-                button.colorButton
-                    | Explore locations
-                //- #parallax.parallax
-                //-     img(src="./img/parallax/01.png" alt="Layer 1" data-depth="0")
-                //-     img(src="./img/parallax/02.png" alt="Layer 2" data-depth="0.2")
-                //-     img(src="./img/parallax/03.png" alt="Layer 3" data-depth="0.4")
-                //-     img(src="./img/parallax/04.png" alt="Layer 4" data-depth="0.6")
-                //-     img(src="./img/parallax/05.png" alt="Layer 5" data-depth="0.8")
-                //-     img(src="./img/parallax/06.png" alt="Layer 6" data-depth="1")
+        main.main
+            .content 
+                section.sectionMain
+                    .sectionAbsolute
+                        .hgroup
+                            h2.hgroupSubtitle A&nbsp;life time experience
+                            h1.hgroupTitle Norway Time<br/>To&nbsp;Remember
+                        button.button.buttonBrown
+                            | Explore locations
+                    #parallax.parallax
+                        img(src="./img/parallax/01.jpg" alt="Layer 1" data-depth="0")
+                        img(src="./img/parallax/02.png" alt="Layer 2" data-depth="0.2")
+                        img(src="./img/parallax/03.png" alt="Layer 3" data-depth="0.4")
+                        img(src="./img/parallax/04.png" alt="Layer 4" data-depth="0.6")
+                        img(src="./img/parallax/05.png" alt="Layer 5" data-depth="0.8")
+                        img(src="./img/parallax/06.png" alt="Layer 6" data-depth="1")
+
+                section
+                    h2 Travel experience
+                    p Summary about the&nbsp;travel
+                    ul.icons
+                        li.iconsItem
+                            include includes/backpack.pug
+                        li.iconsItem
+                            include includes/mountains.pug
+                        li.iconsItem
+                            include includes/boat.pug
+                        li.iconsItem
+                            include includes/tourist.pug
+                        li.iconsItem
+                            include includes/control.pug
+            section.sectionWhite
+                .content
+                    h2 Gallery
+                    p Summary about the&nbsp;travel  
+                    ul.gallery
+                        each item in ['image1', 'image2', 'image3', 'image4']
+                            li.galleryItem.jsBounceInDown.jsAnimatable
+                                img(src=`./img/gallery/${item}.jpg` alt=`${item}`)   
             
-        script(src="./js/index.js")
+        footer.footer
+            .content
+                p.copyright @KirJS &amp;&nbsp;Elena Litvinova collaboration, Illustration was drawn by&nbsp;lesson Art With FLo
+        script(src="./js/scroll-animation.js")
+        script(src="./js/parallax.js")
+        script(src="./js/svg-animation.js")
