@@ -1,10 +1,27 @@
 ;(function () {
-    window.onload = function () {
-        initSvgAnimation();
-    }
+    const svgNodes = document.querySelectorAll('svg'); 
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                initSvgAnimation();
+            } else {
+                svgNodes.forEach((svgNode) => {
+                    svgNode.classList.remove('svgStartAnimation');
+                });
+            }
+        });
+    }, {
+        root: null
+    });
+
+    observer.observe(document.querySelector('#icons'));
+
+    // window.addEventListener('load', () => {
+    //     initSvgAnimation();
+    // });
 
     function initSvgAnimation() {
-        const svgNodes = Array.from(document.querySelectorAll('svg')); 
         svgNodes.forEach((svgNode) => {
             startSvgAnimation(svgNode)
         });
@@ -14,11 +31,11 @@
         const paths = svgNode.querySelectorAll('path');
         for (let i = 0; i < paths.length; i++) {
             const path = paths[i];
-            const pathLength = Math.ceil(path.getTotalLength());
+            const pathLength = Math.ceil(path.getTotalLength());            
             setPosition(path, pathLength);
         }
 
-        svgNode.classList.add('svgStartAnimation')
+        svgNode.classList.add('svgStartAnimation');
     }
 
     function setPosition(element, length) {

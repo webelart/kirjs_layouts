@@ -7,20 +7,11 @@
         Number(node.dataset.depth)
     ));
 
-    const topParallax = parallax.offsetTop;
-    const leftParallax = parallax.offsetLeft;
-    const info = parallax.getBoundingClientRect();
-
     let inputX = 0;
     let inputY = 0;
-    let positionX = 0;
-    let positionY = 0;
 
     let offsetX = 0;
     let offsetY = 0;
-
-    const halfWidth = info.width / 2;
-    const halfHeight = info.height / 2;
 
     updateDimensions();
     startAnimation();
@@ -52,7 +43,6 @@
     function onScroll() {
         inputY = window.scrollY / windowCenterY * 1.5;
     }
-
 
     function onAnimationFrame() {
         const positionX = inputX * windowWidth / 10;

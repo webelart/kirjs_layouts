@@ -3,10 +3,9 @@ color-brown = #1F030E;
 color-brown-lite = #70241D;
 color-white = #FFFFFF;
 
-/*
-    Global styles
-*/
-
+html {
+    font-size: 20px;
+}
 html,
 body {
     font: 20px/1.4 'Montserrat', sans-serif;
@@ -34,7 +33,7 @@ svg.svgStartAnimation {
     opacity: 1;
 
     path {
-        animation: anim-line 1s ease forwards;
+        animation: anim-line 2s ease forwards;
     }
 }
 
@@ -86,6 +85,7 @@ svg.svgStartAnimation {
     &White {
         position: relative;
         background: color-white;
+        padding-top: 1rem;
         margin: 5rem 0;
 
         .content {
@@ -111,7 +111,7 @@ svg.svgStartAnimation {
 
         &::after {
             bottom: -7rem;
-            background: url('/img/decorators/bottom.png') repeat-x center;
+            background: url('img/decorators/bottom.png') repeat-x center;
             background-size: auto 100%;
         }
     }
@@ -147,11 +147,10 @@ svg.svgStartAnimation {
     align-items: center;
 
     &Link {
-        cursor: pointer;
         display: inline-block;
         color: color-brown;
         text-decoration: none;
-        padding: 0.5rem clamp(1rem, 4vw, 3rem);
+        padding: 0.5rem 4vw;
         transition: opacity 0.2s;
 
         &:visited {
@@ -168,7 +167,6 @@ svg.svgStartAnimation {
 .button {
     font: 700 0.8rem/1em 'Montserrat', sans-serif;
     cursor: pointer;
-    display: inline-block;
     border: none;
     border-radius: 0.5rem;
     transition: all 0.2s;
@@ -189,24 +187,11 @@ svg.svgStartAnimation {
         border-radius: 1rem;
         color: white;
         background: linear-gradient(to right, #1f030e 0%,#70241d 100%);
-    }
-}
+        box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.5);
 
-.hgroup {
-    &Subtitle {
-        color: color-brown-lite;
-        text-transform: uppercase;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        font-size: 0.9rem;
-        margin-bottom: 0.8em;
-    }
-
-    &Title {
-        font-size: 3.5rem;
-        line-height: 1.2;
-        font-weight: 700;
-        margin-bottom: 0.4em;
+        &:hover {
+            box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+        }
     }
 }
 
@@ -231,17 +216,31 @@ svg.svgStartAnimation {
 
     &Item {
         width: clamp(6rem, 12vw, 10rem);
+    }
+}
 
-        img {
-            width: 100%;
-        }
+.hgroup {
+    &Subtitle {
+        color: color-brown-lite;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        font-size: 0.9rem;
+        margin-bottom: 0.8em;
+    }
+
+    &Title {
+        font-size: 3.5rem;
+        line-height: 1.2;
+        font-weight: 700;
+        margin-bottom: 0.4em;
     }
 }
 
 .gallery {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 1rem;
+    gap: 1rem;
     margin-bottom: 2rem;
 
     img {
@@ -250,35 +249,46 @@ svg.svgStartAnimation {
     }
 }
 
-/* JS styles */
-.jsAnimated.jsSVG {
-    animation-name: bounceInDown;
+.jsAnimated.jsBounceLeft {
+    animation-name: bounceLeft;
     opacity: 1;
     transform: translate3D(0, 0, 0);
 }
 
-.jsAnimated.jsBounceInDown {
-    animation-name: bounceInDown;
+.jsAnimated.jsBounceRight {
+    animation-name: bounceRight;
     opacity: 1;
     transform: translate3D(0, 0, 0);
 }
 
 .jsAnimated {
     animation-fill-mode: both;
-    animation-duration: 0.5s;
+    animation-duration: 2s;
     animation-delay: 0.3s;
     backface-visibility: hidden;
 }
 
-@keyframes bounceInDown {
+@keyframes bounceLeft {
     0% {
         opacity: 0;
-        transform: translate3d(0, 300px, 0);
+        transform: translate3d(-500px, 0, 0);
     }
     100% {
         opacity: 1;
         transform: translate3d(0, 0, 0);
     }
 }
+
+@keyframes bounceRight {
+    0% {
+        opacity: 0;
+        transform: translate3d(500px, 0, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
 
 
